@@ -1,3 +1,6 @@
+% TeXplates/Mathematics.tex
+% v0.1.0
+% https://github.com/HoyanMok/TeXplates
 \documentclass[openany]{book} 
 % \documentclass{ctexbook} 如果用中文
 % \documentclass[10pt,a4paper]{ctexart}  字体大小和纸张大小，默认分别为10pt和letterpaper
@@ -15,7 +18,7 @@
 
 \usepackage{imakeidx} %索引
 	\makeindex[intoc]
-	\newcommand*{\indexbf}[1]{\textit{\textbf{#1}}\index{#1}} % Index for definition
+	\newcommand*{\indexbf}[1]{\emph{\textbf{#1}}\index{#1}} % Index for definition
 	\newcommand*{\indexfm}[2]{#1\index{  Symbols@Symbols used!#2@$#1$}} % Used Symbol
 
 % 将PATH换成绝对路径 (Windows) 或相对路径 (Mac OS或Linux)
@@ -38,6 +41,24 @@
 					-\oldstylenums{\arabic{equation}}} % 显示为section数-equation数
 \usepackage{amssymb} % 数学符号
 \usepackage{mathrsfs} % 花体
+\usepackage{amsthm} %定义、证明、定理等
+	\theoremstyle{plain}
+		\newtheorem{axion}{Axion} %公理
+		\newtheorem{theorem}{Theorem}[section] %定理
+		\newtheorem{corollary}{Corollary} %推论
+		\newtheorem{lemma}{Lemma} %引理
+	\theoremstyle{definition}
+		\newtheorem{definition}{Definition}[section] %定义
+		\newtheorem{proposition}{Proposition} %命题
+	\renewcommand{\proofname}{\textbf{Proof}}
+
+\renewcommand{\thetheorem}{%
+	\arabic{section}.\arabic{theorem}%
+} % 公式编号不显示`\S`
+\renewcommand{\thedefinition}{%
+	\arabic{section}.\arabic{definition}%
+} % 公式编号不显示`\S`
+
 \usepackage{esint} % 积分
 \usepackage{siunitx} % 标准SI数值和单位处理
 
@@ -76,6 +97,8 @@
 \else%
 	\frac{\partial^{#1} #2}{\partial #3^{#1}}% n阶偏导数\pdiff[n]{y}{x}
 \fi}
+\newcommand{\emphbf}[1]{\emph{\textbf{#1}}}
+% \indexbf 的定义见前imakeidx的引用下
 
 % 笔者习惯的运算符:
 \DeclareMathOperator{\tg}{tg}
@@ -98,8 +121,9 @@
 \titlepic{\includegraphics{\PATH latex-project-logo.pdf}}
 
 \begin{document}
-\frontmatter
 \maketitle % 打印标题
+\thispagestyle{empty}
+\frontmatter
 \chapter{Preface}
 Preface.
 
@@ -140,11 +164,14 @@ Citation: \cite{Knuth}.
 
 An example for \indexbf{cross reference}: Fig~\ref{subfigure1} is the logo for the \LaTeX{} Project.
 
+\begin{theorem}
 Inline equation:
 \begin{equation}\label{公式的标签}
 	\int \indexfm{\diff y x}\,\dif x = y(x) + C.
 \end{equation}
+\end{theorem}
 
+\begin{corollary}
 Multiline equations and the alignment:
 \begin{align}
 	\nabla\cdot \bv D &= \rho
@@ -155,6 +182,8 @@ Multiline equations and the alignment:
 	\\
 	\nabla \times \bv H &= \bv j + \pdiff{\bv D}{t}
 \end{align}
+\end{corollary}
+
 
 \chapter{Test}
 \section{Test}
