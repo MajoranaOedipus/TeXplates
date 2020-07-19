@@ -1,5 +1,5 @@
 % TeXplates/Mathematics.tex
-% v0.1.1
+% v0.1.2
 % https://github.com/HoyanMok/TeXplates
 \documentclass[openany]{book} 
 % \documentclass{ctexbook} 如果用中文
@@ -19,7 +19,8 @@
 \usepackage{imakeidx} %索引
 	\makeindex[intoc]
 	\newcommand*{\indexbf}[1]{\emph{\textbf{#1}}\index{#1}} % Index for definition
-	\newcommand*{\indexfm}[2]{#1\index{  Symbols@Symbols used!#2@$#1$}} % Used Symbol
+	\newcommand*{\indexfm}[2][ ]{#2\index{ @Symbols used!#1@$#2$}} % Used Symbol
+	% \indexfm[name for sort]{display} 
 
 % 将PATH换成绝对路径 (Windows) 或相对路径 (Mac OS或Linux)
 % 使用「/」而不是「\」
