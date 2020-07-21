@@ -1,5 +1,5 @@
 % TeXplates/Mathematics.tex
-% v0.1.2
+% v0.1.3
 % https://github.com/HoyanMok/TeXplates
 \documentclass[openany]{book} 
 % \documentclass{ctexbook} 如果用中文
@@ -73,6 +73,9 @@
 \usepackage{svg} % svg位图
 \usepackage{wrapfig} % 简单的图文绕排
 \usepackage[inline]{enumitem} % 编号
+	% 新列表:
+	\newlist{conditionlist}{enumerate}{2}
+	\setlist[conditionlist,1,2]{topsep = 0pt, itemsep = 0pt, parsep = 0pt}
 \usepackage{geometry} % 调整页边距
 % \geometry{left=1.6cm,right=1.6cm}
 \usepackage{xcolor} % 颜色
@@ -86,6 +89,8 @@
 \newcommand{\dif}{\mathop{}\!\mathrm{d}} % 微分算子d
 \newcommand*{\basis}[1]{\hat{\boldsymbol{#1}}} % 基底
 \newcommand*{\bv}{\boldsymbol} % 向量加粗
+\newcommand*{\id}{\mathrm{id}} % 单位映射
+\newcommand*{\IFF}{\;\leftrightarrow\;} % 充要条件
 
 \newcommand*{\diff}[3][1]
 {\if#11%
