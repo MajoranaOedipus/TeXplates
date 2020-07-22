@@ -1,5 +1,5 @@
 % TeXplates/Mathematics.tex
-% v0.1.4
+% v0.1.5
 % https://github.com/HoyanMok/TeXplates
 \documentclass[openany]{book} 
 % \documentclass{ctexbook} 如果用中文
@@ -132,8 +132,8 @@
 \titlepic{\includegraphics{\PATH latex-project-logo.pdf}}
 
 \begin{document}
+\pagenumbering{Alph}
 \maketitle % 打印标题
-\thispagestyle{empty}
 \frontmatter
 \chapter{Preface}
 Preface.
@@ -208,7 +208,7 @@ The counter \verb|section| doesn't reset when a new chapter opened.
 \nocite{*} % 这个表示列出所有没有在文中被引用的参考文献
 \printbibliography[heading=bibliography, title={Bibliography}]
 
-\indexprologue{Here listed the important symbols used in this notes}
+\indexprologue{Here listed the important symbols used in this notes.}
 \printindex[symbol]
 
 \printindex
