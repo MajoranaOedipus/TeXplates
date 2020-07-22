@@ -1,5 +1,5 @@
 % TeXplates/Mathematics.tex
-% v0.1.3
+% v0.1.4
 % https://github.com/HoyanMok/TeXplates
 \documentclass[openany]{book} 
 % \documentclass{ctexbook} 如果用中文
@@ -7,6 +7,11 @@
 % 五号 = 10.5pt，小四=12pt，四号=14pt
 % 其他可选参量如twocolumn, 两行排版
 
+% 将PATH换成绝对路径或相对路径
+% 使用「/」而不是「\」
+\newcommand{\PATH}{./}
+
+% \usepackage{CJK} % for Chinese charactors appearing in the reference.
 \usepackage{biblatex} %[style=gb7714-2015]{biblatex} 可以选择样式
 \addbibresource{Mathematics.bib} % 把这里改成实际的文件名
 
@@ -17,14 +22,13 @@
 	\markboth{#1}{#1}}
 
 \usepackage{imakeidx} %索引
-	\makeindex[intoc]
+	\makeindex[intoc, title={Index}]
+	\makeindex[intoc, name=symbol, title={Symbol List}]
 	\newcommand*{\indexbf}[1]{\emph{\textbf{#1}}\index{#1}} % Index for definition
-	\newcommand*{\indexfm}[2][ ]{#2\index{ @Symbols used!#1@$#2$}} % Used Symbol
+	\newcommand*{\indexfm}[2][\ ]{#2\index[symbol]{#1@$#2$}} % Used Symbol
 	% \indexfm[name for sort]{display} 
 
-% 将PATH换成绝对路径 (Windows) 或相对路径 (Mac OS或Linux)
-% 使用「/」而不是「\」
-\newcommand{\PATH}{PATH/}
+
 
 % 对目录项等的修改
 \usepackage{chngcntr}
@@ -134,6 +138,7 @@
 \chapter{Preface}
 Preface.
 
+\phantomsection
 \addcontentsline{toc}{chapter}{Contents}
 \tableofcontents
 
@@ -203,6 +208,9 @@ The counter \verb|section| doesn't reset when a new chapter opened.
 \nocite{*} % 这个表示列出所有没有在文中被引用的参考文献
 \printbibliography[heading=bibliography, title={Bibliography}]
 
+\indexprologue{Here listed the important symbols used in this notes}
+\printindex[symbol]
 
 \printindex
+
 \end{document}
