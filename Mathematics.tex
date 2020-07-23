@@ -1,5 +1,5 @@
 % TeXplates/Mathematics.tex
-% v0.1.5
+% v0.1.6
 % https://github.com/HoyanMok/TeXplates
 \documentclass[openany]{book} 
 % \documentclass{ctexbook} 如果用中文
@@ -79,7 +79,10 @@
 \usepackage[inline]{enumitem} % 编号
 	% 新列表:
 	\newlist{conditionlist}{enumerate}{2}
-	\setlist[conditionlist,1,2]{topsep = 0pt, itemsep = 0pt, parsep = 0pt}
+	\setlist[conditionlist,1]{topsep = 0pt, itemsep = 0pt, parsep = 0pt,%
+		label=\arabic*), leftmargin=2\parindent}
+	\setlist[conditionlist,2]{topsep = 0pt, itemsep = 0pt, parsep = 0pt,%
+		label=\alph*), leftmargin=3\parindent}
 \usepackage{geometry} % 调整页边距
 % \geometry{left=1.6cm,right=1.6cm}
 \usepackage{xcolor} % 颜色
