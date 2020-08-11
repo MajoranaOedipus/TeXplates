@@ -1,5 +1,5 @@
 % TeXplates/Mathematics.tex
-% v0.1.6
+% v0.1.7
 % https://github.com/HoyanMok/TeXplates
 \documentclass[openany]{book} 
 % \documentclass{ctexbook} 如果用中文
@@ -20,6 +20,8 @@
 	% \addcontentsline{toc}{chapter}{参考文献}
 	\chapter{#1}% 
 	\markboth{#1}{#1}}
+
+\usepackage[notbib, notindex]{tocbibind} % 解决TOC在TOC中的问题
 
 \usepackage{imakeidx} %索引
 	\makeindex[intoc, title={Index}]
@@ -141,8 +143,6 @@
 \chapter{Preface}
 Preface.
 
-\phantomsection
-\addcontentsline{toc}{chapter}{Contents}
 \tableofcontents
 
 \mainmatter
