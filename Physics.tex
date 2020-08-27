@@ -1,0 +1,274 @@
+% TeXplates/Physics.tex
+% v0.0.1
+% https://github.com/HoyanMok/TeXplates
+\documentclass[openany]{book} 
+% \documentclass{ctexbook} 如果用中文
+% \documentclass[10pt,a4paper]{ctexart}  字体大小和纸张大小，默认分别为10pt和letterpaper
+% 五号 = 10.5pt，小四=12pt，四号=14pt
+% 其他可选参量如twocolumn, 两行排版
+
+% 将PATH换成绝对路径或相对路径
+% 使用「/」而不是「\」
+\newcommand{\PATH}{./}
+
+% \usepackage{CJK} % for Chinese charactors appearing in the reference.
+\usepackage{biblatex} %[style=gb7714-2015]{biblatex} 可以选择样式
+\addbibresource{Mathematics.bib} % 把这里改成实际的文件名
+
+% 令参考资料能够加入目录中:
+\defbibheading{bibliography}[\bibname]{% 
+	% \addcontentsline{toc}{chapter}{参考文献}
+	\chapter{#1}% 
+	\markboth{#1}{#1}}
+
+\usepackage[notbib, notindex]{tocbibind} % 解决TOC在TOC中的问题
+
+\usepackage{imakeidx} %索引
+	\makeindex[intoc, title={Index}]
+	\makeindex[intoc, name=symbol, title={Symbol List}]
+	\newcommand*{\indexbf}[1]{\emph{\textbf{#1}}\index{#1}} % Index for definition
+	\newcommand*{\indexfm}[2][\ ]{#2\index[symbol]{#1@$#2$}} % Used Symbol
+	% \indexfm[name for sort]{display} 
+
+
+
+% 对目录项等的修改
+\usepackage{chngcntr}
+	\counterwithout{section}{chapter} % So that the section won't reset when newing a chapter
+\renewcommand{\thesection}{\textmd{\S}\arabic{section}}
+\renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
+
+% 引用的宏包:
+% 宏包的使用, 可以在命令行运行texdoc <宏包名>获得文档
+\usepackage{multicol} % 分栏 (全局分栏建议在文档类处设置)
+\usepackage{amsmath} % AMS数学标准
+	\makeatletter % '@' now normal "letter"
+	\@addtoreset{equation}{section} % 每次换section就把equation清零
+	\makeatother  % '@' is restored as "non-letter"
+	\renewcommand\theequation{\oldstylenums{\arabic{section}}%
+					-\oldstylenums{\arabic{equation}}} % 显示为section数-equation数
+\usepackage{amssymb} % 数学符号
+\usepackage{mathrsfs} % 花体
+\usepackage{amsthm} %定义、证明、定理等
+	\theoremstyle{plain}
+		\newtheorem{axiom}{Axiom} %公理
+		\newtheorem{theorem}{Theorem}[section] %定理
+		\newtheorem{corollary}{Corollary} %推论
+		\newtheorem{lemma}{Lemma} %引理
+	\theoremstyle{definition}
+		\newtheorem{definition}{Definition}[section] %定义
+		\newtheorem{proposition}{Proposition} %命题
+	\renewcommand{\proofname}{\textbf{Proof}}
+
+\renewcommand{\thetheorem}{%
+	\arabic{section}.\arabic{theorem}%
+} % 公式编号不显示`\S`
+\renewcommand{\thedefinition}{%
+	\arabic{section}.\arabic{definition}%
+} % 定义编号不显示`\S`
+
+\usepackage{esint} % 积分
+\usepackage{siunitx} % 标准SI数值和单位处理
+
+\usepackage{tikz} % 绘图
+\usepackage{float} % 浮动体 (供图片, 表格等) 扩展, 主要用于提供h模式
+\usepackage{graphicx} % 插入图片
+\usepackage{titlepic}
+\usepackage[font=small, skip=5pt]{caption} % 缩小题注字体和题注与图片距离
+\usepackage{subcaption} % 子图和子图的题注
+\usepackage{svg} % svg位图
+\usepackage{wrapfig} % 简单的图文绕排
+\usepackage[inline]{enumitem} % 编号
+	% 新列表:
+	\newlist{conditionlist}{enumerate}{2}
+	\setlist[conditionlist,1]{topsep = 0pt, itemsep = 0pt, parsep = 0pt,%
+		label=\arabic*), leftmargin=2\parindent}
+	\setlist[conditionlist,2]{topsep = 0pt, itemsep = 0pt, parsep = 0pt,%
+		label=\alph*), leftmargin=3\parindent}
+\usepackage{geometry} % 调整页边距
+% \geometry{left=1.6cm,right=1.6cm}
+\usepackage{xcolor} % 颜色
+\usepackage[colorlinks=true,bookmarks=true]{hyperref} % 引用, 交叉引用, 图表等的链接; 生成书签
+\hypersetup{linkcolor=[rgb]{1,0.27,0},bookmarksopen = true}% 更多设置请查阅: texdoc hyperref
+
+
+% 定义一些笔者常用的指令:
+\newcommand{\me}{\mathrm{e}} % 自然对数的底
+\newcommand{\mi}{\mathrm{i}} % 虚数单位
+\newcommand*{\basis}[1]{\hat{\boldsymbol{#1}}} % 基底
+\newcommand*{\bv}{\boldsymbol} % 向量加粗
+\newcommand*{\id}{\mathrm{id}} % 单位映射
+\newcommand*{\IFF}{\;\leftrightarrow\;} % 充要条件
+
+\newcommand*{\bra}[1]
+	{
+		\left\langle
+			{#1}
+		\right\vert
+	}% 左矢 <a|
+\newcommand*{\ket}[1]
+	{
+		\left\vert
+			{#1}
+		\right\rangle
+	}% 右矢 |b>
+\newcommand*{\dyad}[2]
+	{
+		\left\vert
+				{#1}
+				\middle\rangle
+				\middle\langle
+				{#2}
+		\right\vert
+	}% 并矢 |a><b|
+\newcommand*{\inner}[2]
+	{
+		\left\langle
+			{#1}
+			\middle\vert
+			{#2}
+		\right\rangle
+	}% 内积 <a|b>
+\newcommand*{\varinner}[3]
+	{
+		\left\langle
+			{#1}
+			\middle\vert
+			{#2}
+			\middle\vert
+			{#3}
+		\right\rangle
+	}% 能量内积 <a|A|b>
+
+\newcommand*{\dif}[1][1]
+	{\if#11%
+		\mathop{}\!\mathrm{d}%
+	\else%
+		\mathop{}\!\mathrm{d}^#1
+	\fi} % 微分算子d
+\newcommand*{\diff}[3][1]
+	{\if#11%
+		\frac{\mathrm{d} #2}{\mathrm{d} #3}% 导数\diff{y}{x}
+	\else%
+		\frac{\mathrm{d}^{#1} #2}{\mathrm{d} #3^{#1}}% n阶导数\diff[n]{y}{x}
+	\fi}
+\newcommand*{\pdiff}[3][1]
+	{\if#11%
+		\frac{\partial #2}{\partial #3}% 偏导数\pdiff{y}{x}
+	\else%
+		\frac{\partial^{#1} #2}{\partial #3^{#1}}% n阶偏导数\pdiff[n]{y}{x}
+	\fi}
+\newcommand*{\deltadiff}[3][1]
+	{\if#11%
+		\frac{\delta #2}{\delta #3}% 导数\diff{y}{x}
+	\else%
+		\frac{\delta^{#1} #2}{\delta #3^{#1}}% n阶导数\diff[n]{y}{x}
+	\fi}
+\newcommand*{\atpoint}[2]
+	{
+		\left.
+		{#1}
+		\right\vert_{#2}
+	}
+
+\newcommand{\emphbf}[1]{\emph{\textbf{#1}}}
+% \indexbf 的定义见前imakeidx的引用下
+
+% 笔者习惯的运算符:
+\DeclareMathOperator{\tg}{tg}
+\DeclareMathOperator{\ctg}{ctg}
+\DeclareMathOperator{\arctg}{arctg}
+\DeclareMathOperator{\sh}{sh}
+\DeclareMathOperator{\ch}{ch}
+% \DeclareMathOperator*{\指令}{显示} 
+% 带星号的版本会像\lim一样
+
+% 文章标题页信息:
+\title{Title}
+\author{ author1\thanks{contact to author1}
+	\and
+		author2\thanks{contact to author2}}
+\date{\today} % 自动生成日期
+\titlepic{\includegraphics{\PATH latex-project-logo.pdf}}
+
+\begin{document}
+\pagenumbering{Alph}
+\maketitle % 打印标题
+\frontmatter
+\chapter{Preface}
+Preface.
+
+\tableofcontents
+
+\mainmatter
+\chapter{Test}
+\section{\texorpdfstring{\TeX{}plate Usage}{TeXplate Usage}}
+\subsection{Compiling}
+
+Change the \verb|PATH/| to the relative path (Mac OS or Linux) or absolute path (Windows) to this file in \verb|\newcommand{\PATH}{PATH/}| in the preamble, and run the following command in your command line:\\[0pt]
+\verb|xelatex| filename (.tex can be omitted)\\
+\verb|biber| filename (.bib can be omitted)\\
+\verb|xelatex| filename\\
+\verb|xelatex| filename
+
+\subsection{Examples}
+
+Citation: \cite{Knuth}.
+
+\begin{figure}[h] %
+\centering
+\begin{subfigure}{.5\textwidth}
+	\centering
+	\includegraphics[width=6cm]{\PATH latex-project-logo.pdf}
+	\caption{Caption}
+	\label{subfigure1}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+	\centering
+	\includegraphics[width=6cm]{\PATH latex-project-logo.pdf}
+	\caption{Caption}
+	\label{subfigure2}
+\end{subfigure}
+\caption{An example for subfigures}
+\end{figure}
+
+An example for \indexbf{cross reference}: Fig~\ref{subfigure1} is the logo for the \LaTeX{} Project.
+
+\begin{theorem}
+Inline equation:
+\begin{equation}\label{公式的标签}
+	\int \indexfm{\diff y x}\,\dif x = y(x) + C.
+\end{equation}
+\end{theorem}
+
+\begin{corollary}
+Multiline equations and the alignment:
+\begin{align}
+	\nabla\cdot \bv D &= \rho
+	\\
+	\nabla \times \bv E & =  - \pdiff{\bv B}{t}
+	\\
+	\nabla \cdot \bv B &= 0
+	\\
+	\nabla \times \bv H &= \bv j + \pdiff{\bv D}{t}
+\end{align}
+\end{corollary}
+
+
+\chapter{Test}
+\section{Test}
+The counter \verb|section| doesn't reset when a new chapter opened. 
+
+\appendix
+\chapter{Appendix}
+
+\backmatter
+\nocite{*} % 这个表示列出所有没有在文中被引用的参考文献
+\printbibliography[heading=bibliography, title={Bibliography}]
+
+\indexprologue{Here listed the important symbols used in this notes.}
+\printindex[symbol]
+
+\printindex
+
+\end{document}
