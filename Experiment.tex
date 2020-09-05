@@ -17,7 +17,6 @@
 
 \usepackage[left = 2cm , right = 2cm , top = 3cm, bottom = 3cm]{geometry}
 \usepackage{amsmath}
-    \numberwithin{equation}{section}% 公式按章节分
 \usepackage{amssymb}
 \usepackage{footnote}
 \usepackage{yhmath}
@@ -157,7 +156,42 @@
     \end{center}%
 }
 
-
+\newcommand{\me}{\mathrm{e}} % 自然对数的底
+\newcommand{\mi}{\mathrm{i}} % 虚数单位
+\newcommand*{\basis}[1]{\hat{\boldsymbol{#1}}} % 基底
+\newcommand*{\bv}{\boldsymbol} % 向量加粗
+\newcommand*{\id}{\mathrm{id}} % 单位映射
+\newcommand*{\IFF}{\;\leftrightarrow\;} % 充要条件
+\newcommand*{\dif}[1][1]
+	{\if#11%
+		\mathop{}\!\mathrm{d}%
+	\else%
+		\mathop{}\!\mathrm{d}^#1
+	\fi} % 微分算子d
+\newcommand*{\diff}[3][1]
+	{\if#11%
+		\frac{\mathrm{d} #2}{\mathrm{d} #3}% 导数\diff{y}{x}
+	\else%
+		\frac{\mathrm{d}^{#1} #2}{\mathrm{d} #3^{#1}}% n阶导数\diff[n]{y}{x}
+	\fi}
+\newcommand*{\pdiff}[3][1]
+	{\if#11%
+		\frac{\partial #2}{\partial #3}% 偏导数\pdiff{y}{x}
+	\else%
+		\frac{\partial^{#1} #2}{\partial #3^{#1}}% n阶偏导数\pdiff[n]{y}{x}
+	\fi}
+\newcommand*{\deltadiff}[3][1]
+	{\if#11%
+		\frac{\delta #2}{\delta #3}% 导数\diff{y}{x}
+	\else%
+		\frac{\delta^{#1} #2}{\delta #3^{#1}}% n阶导数\diff[n]{y}{x}
+	\fi}
+\newcommand*{\atpoint}[2]
+	{
+		\left.
+		{#1}
+		\right\vert_{#2}
+	}
 
 \begin{document}
 \sisetup{separate-uncertainty}
@@ -192,6 +226,7 @@
 % 预习报告 
 
 \addcontentsline{toc}{section}{预习报告}
+\stepcounter{section}
 \section*{\experimentname 预习报告}
 
 \subsection{实验目的}
@@ -241,6 +276,7 @@
 \experimentdata
 
 \addcontentsline{toc}{section}{实验记录}
+\stepcounter{section}
 \section*{\experimentname 实验记录}
 
 \subsection{实验内容、步骤、结果}
@@ -258,6 +294,7 @@
 \reviewdata
 
 \addcontentsline{toc}{section}{分析与讨论}
+\stepcounter{section}
 \section*{\experimentname 分析与讨论}
 
 % \setcounter{section}{0}
