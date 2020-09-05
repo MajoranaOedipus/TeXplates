@@ -46,6 +46,14 @@
 \usepackage[bookmarks=true,colorlinks=true]{hyperref} %超链接
 \hypersetup{linkcolor=[rgb]{1,0.27,0},bookmarksopen = true}% 更多设置请查阅: texdoc hyperref
 
+\usepackage[inline]{enumitem} % 编号
+	% 新列表:
+	\newlist{conditionlist}{enumerate}{2}
+	\setlist[conditionlist,1]{topsep = 0pt, itemsep = 0pt, parsep = 0pt,%
+		label=\arabic*), leftmargin=2\parindent}
+	\setlist[conditionlist,2]{topsep = 0pt, itemsep = 0pt, parsep = 0pt,%
+		label=\alph*), leftmargin=3\parindent}
+
 % 页眉, 表头信息
 
 \newpagestyle{SPAhead}{            
