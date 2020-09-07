@@ -20,7 +20,6 @@
 \usepackage{amssymb}
 \usepackage{footnote}
 \usepackage{yhmath}
-\usepackage{bm}
 \usepackage{float}
 \usepackage{setspace}
     \linespread{1.5}
@@ -31,27 +30,30 @@
 \usepackage{appendix}
 \usepackage{graphicx}
 \usepackage{wrapfig}
-\usepackage{caption2}
+\usepackage{subcaption}
 \usepackage{tikz}
+    %定义插入 TikZ 作图命令
+    \newcommand{\inputtikzfigure}[1]{\input{#1.tex}}
 \usepackage{esint} %积分
 \usepackage{siunitx}%单位
     \usetikzlibrary{arrows.meta}
 \usepackage[T1]{fontenc}
 \usepackage{tabularx}
-%定义插入 TikZ 作图命令
-    \newcommand{\inputtikzfigure}[1]{\input{#1.tex}}
+
 %定义罗马数学
 \usepackage{mathrsfs}%使用花体字 命令\mathscr
 \usepackage[bookmarks=true,colorlinks=true]{hyperref} %超链接
-\hypersetup{linkcolor=[rgb]{1,0.27,0},bookmarksopen = true}% 更多设置请查阅: texdoc hyperref
+\hypersetup{linkcolor=[rgb]{1,0.27,0}, bookmarksopen = true}% 更多设置请查阅: texdoc hyperref
 
 \usepackage[inline]{enumitem} % 编号
-	% 新列表:
+	% 新列表 （间距较小）:
 	\newlist{conditionlist}{enumerate}{2}
 	\setlist[conditionlist,1]{topsep = 0pt, itemsep = 0pt, parsep = 0pt,%
 		label=\arabic*), leftmargin=2\parindent}
 	\setlist[conditionlist,2]{topsep = 0pt, itemsep = 0pt, parsep = 0pt,%
 		label=\alph*), leftmargin=3\parindent}
+
+\usepackage{listing} % 用于展示代码
 
 % 页眉, 表头信息
 
@@ -109,7 +111,7 @@
     \end{center}%
 }
 
-\newcommand{\previewdata}{%
+\newcommand{\previewdata}{% 预习
     \begin{center}
         \begin{tabular}{|p{1.5cm}|p{4.5cm}|p{4cm}|p{3.65cm}|}
             \hline
@@ -124,7 +126,7 @@
     \end{center}%
 }
     
-\newcommand{\reviewdata}{%
+\newcommand{\reviewdata}{% 分析与讨论
     \begin{center}
         \begin{tabular}{|p{2cm}|p{4cm}|p{4cm}|p{4cm}|}
             \hline
@@ -140,7 +142,7 @@
     \end{center}%
 }
 
-\newcommand{\experimentdata}{%
+\newcommand{\experimentdata}{% 实验记录
     \begin{center}
         \begin{tabular}{|p{2cm}|p{4cm}|p{4cm}|p{4cm}|}
             \hline
