@@ -1,5 +1,5 @@
 % TeXplates/Physics.tex
-% v0.0.1
+% v0.0.2
 % https://github.com/HoyanMok/TeXplates
 \documentclass[openany]{book} 
 % \documentclass{ctexbook} 如果用中文
@@ -112,6 +112,12 @@
 			{#1}
 		\right\rangle
 	}% 右矢 |b>
+\newcommand*{\braket}[1]
+	{
+		\left\langle
+			{#1}
+		\right\rangle
+	} % 期望 <A>
 \newcommand*{\dyad}[2]
 	{
 		\left\vert
