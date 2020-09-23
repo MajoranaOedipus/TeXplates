@@ -192,7 +192,16 @@
 		\left.
 		{#1}
 		\right\vert_{#2}
-	}
+    }
+    
+    \newcommand{\showfig}[2][14.5cm]{
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=#1]{#2}
+            %对于A4大小的图片, 不要比这个尺寸大
+            % \caption{<CAPTION>}
+        \end{figure}
+        }
 
 \begin{document}
 \sisetup{separate-uncertainty}
