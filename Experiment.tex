@@ -54,6 +54,12 @@
 
 \usepackage{listing} % 用于展示代码
 
+\DeclareMathOperator{\tg}{tg}
+\DeclareMathOperator{\ctg}{ctg}
+\DeclareMathOperator{\arctg}{arctg}
+\DeclareMathOperator{\sh}{sh}
+\DeclareMathOperator{\ch}{ch}
+
 % 页眉, 表头信息
 
 \newpagestyle{SPAhead}{            
@@ -204,7 +210,7 @@
         }
 
 \begin{document}
-\sisetup{separate-uncertainty}
+\sisetup{separate-uncertainty, range-phrase=\textup{--}}
 \noindent
 \renewcommand\arraystretch{1.8}
 \infotable
