@@ -63,7 +63,7 @@
 % 页眉, 表头信息
 
 \newpagestyle{SPAhead}{            
-    \sethead{中山大学物理与天文学院基础物理实验报告}{$\quad$\student}{\experimentname}     %设置页眉
+    \sethead{中山大学物理与天文学院近代物理实验报告}{$\quad$\student}{\experimentname}     %设置页眉
     \setfoot{}{}{}      %设置页脚, 可以在页脚添加 
     % \thepage           % 显示页数
     \headrule           % 添加页眉的下划线
@@ -116,33 +116,19 @@
     \end{center}%
 }
 
-\newcommand{\previewdata}{% 预习
+\newcommand{\previewdata}{% 总的信息
     \begin{center}
         \begin{tabular}{|p{1.5cm}|p{4.5cm}|p{4cm}|p{3.65cm}|}
             \hline
             {\large 专业}:  & {\large 物理学}    & {\large 年级: }    & {\large \Grade} \\
             \hline
-            {\large 姓名: } & {\large \student} & {\large 学号: }    & {\large \stuID} \\
+            {\large 姓名: } & \multicolumn{3}{c|}{\large \student} \\
+            \hline
+            {\large 学号: }  & \multicolumn{3}{c|}{\large \stuID} \\
             \hline
             {\large 日期: } & {\large \previewdate} & {\large 教师签名: } & \\
             \hline
             \specialrule{0em}{0.6cm}{0cm}
-        \end{tabular}
-    \end{center}%
-}
-    
-\newcommand{\reviewdata}{% 分析与讨论
-    \begin{center}
-        \begin{tabular}{|p{2cm}|p{4cm}|p{4cm}|p{4cm}|}
-            \hline
-            专业: & 物理学 & 年级:  & \Grade \\
-            \hline
-            姓名: & \student & 学号: & \stuID \\
-            \hline
-            日期: & \reviewdate & & \\
-            \hline
-            评分: & & 教师签名: & \\
-            \hline
         \end{tabular}
     \end{center}%
 }
@@ -153,11 +139,31 @@
             \hline
             专业:  & 物理学 & 年级:  & \Grade \\
             \hline
-            姓名:  & \student & 学号:  & \stuID \\
+            姓名:  & \multicolumn{3}{c|}{\student} \\
+            \hline 
+            学号:  & \multicolumn{3}{c|}{\stuID} \\
             \hline
             日期:  & \experimentdate & & \\
             \hline
             评分:  &   & 教师签名: & \\
+            \hline
+        \end{tabular}
+    \end{center}%
+}
+
+\newcommand{\reviewdata}{% 分析与讨论
+    \begin{center}
+        \begin{tabular}{|p{2cm}|p{4cm}|p{4cm}|p{4cm}|}
+            \hline
+            专业: & 物理学 & 年级:  & \Grade \\
+            \hline
+            姓名:  & \multicolumn{3}{c|}{\student} \\
+            \hline 
+            学号:  & \multicolumn{3}{c|}{\stuID} \\
+            \hline
+            日期: & \reviewdate & & \\
+            \hline
+            评分: & & 教师签名: & \\
             \hline
         \end{tabular}
     \end{center}%
@@ -209,6 +215,16 @@
         \end{figure}
         }
 
+\newcounter{instruCounter}
+\setcounter{instruCounter}{0}
+    \newcommand{\instrument}[3]{%
+        \stepcounter{instruCounter}\theinstruCounter &%
+        #1 &%
+        #2 &%
+        #3 \\
+        \hline
+        }
+
 \begin{document}
 \sisetup{separate-uncertainty, range-phrase=\textup{--}}
 \noindent
@@ -253,23 +269,17 @@
 
 \subsection{实验用具}
 \begin{table}[H]
-\begin{center}
-    \begin{tabular}{|c|c|c|p{8cm}|}%{|c|c|c|c|}%{|p{2cm}|p{4cm}|p{4cm}|p{4cm}|}
-        \hline
-        编号 & 仪器用具名称 & 数量 & 主要参数 \\
-        \hline
-        1 &  & 1 &  \\ %TODO:仪器用具
-        \hline
-        2 &  & 2 &  \\
-        \hline
-        3  &   & 1 &  \\
-        \hline
-        4  &   & 1 &  \\
-        \hline
-    \end{tabular}
-	%\caption{<Caption>}
-\end{center}
-\end{table}
+    \begin{center}
+        \begin{tabular}{|c|c|c|m{12cm}|}
+            \hline
+            编号 & 仪器用具名称 & 数量 & 主要参数 \\
+            \hline
+            \instrument{A}{1}{很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长的句子} % \instrument{名称}{数目}{参数}
+            \instrument{B}{1}{}
+        \end{tabular}
+        %\caption{<Caption>}
+    \end{center}
+    \end{table}
 
 \subsection{实验注意事项}
 
@@ -325,7 +335,7 @@ SI: \SI{1.23(45)e-6}{\kilo\gram} and \ang{7;8;9}
 
 \appendix
 
-\section{附录}
+\section{贡献说明}
 
 
 \end{document}
