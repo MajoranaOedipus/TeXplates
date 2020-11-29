@@ -62,14 +62,13 @@
 
 % 页眉, 表头信息
 
-\newpagestyle{SPAhead}{            
-    \sethead{中山大学物理与天文学院近代物理实验报告}{$\quad$\student}{\experimentname}     %设置页眉
-    \setfoot{}{}{}      %设置页脚, 可以在页脚添加 
-    % \thepage           % 显示页数
-    \headrule           % 添加页眉的下划线
-    % \footrule          % 添加页脚的下划线
-}
-\pagestyle{SPAhead}    %使用该style
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\cfoot{\thepage}
+\lhead{中山大学物理与天文学院近代物理实验报告}
+\chead{$\qquad\qquad\quad$\student}
+\rhead{\experimentname}
 
 
 \usepackage{amsthm}
