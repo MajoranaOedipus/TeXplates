@@ -1,5 +1,5 @@
 % TeXplates/Mathematics.tex
-% v0.1.7
+% v0.1.8
 % https://github.com/HoyanMok/TeXplates
 \documentclass[openany]{book} 
 % \documentclass{ctexbook} 如果用中文
@@ -27,8 +27,8 @@
 	\makeindex[intoc, title={Index}]
 	\makeindex[intoc, name=symbol, title={Symbol List}]
 	\newcommand*{\indexbf}[1]{\emph{\textbf{#1}}\index{#1}} % Index for definition
-	\newcommand*{\indexfm}[2][\ ]{#2\index[symbol]{#1@$#2$}} % Used Symbol
-	% \indexfm[name for sort]{display} 
+	\newcommand*{\indexmath}[2][\ ]{#2\index[symbol]{#1@$#2$}} % Used Symbol
+	% \indexmath[name for sort]{display} 
 
 % 对目录项等的修改
 \usepackage{chngcntr}
@@ -180,7 +180,7 @@ An example for \indexbf{cross reference}: Fig~\ref{subfigure1} is the logo for t
 \begin{theorem}
 Inline equation:
 \begin{equation}\label{公式的标签}
-	\int \indexfm{\diff y x}\,\dif x = y(x) + C.
+	\int \indexmath{\diff y x}\,\dif x = y(x) + C.
 \end{equation}
 \end{theorem}
 
