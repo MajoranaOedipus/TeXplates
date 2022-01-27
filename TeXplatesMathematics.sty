@@ -1,0 +1,129 @@
+% TeXplates/Mathematics.sty
+% v0.2.0
+% https://github.com/HoyanMok/TeXplates
+
+\ProvidesPackage{TeXplatesMathematics}
+
+% \RequirePackage{CJK} % for Chinese charactors appearing in the reference.
+\RequirePackage{biblatex} %[style=gb7714-2015]{biblatex} 可以选择样式
+
+
+% 令参考资料能够加入目录中:
+\defbibheading{bibliography}[\bibname]{% 
+	% \addcontentsline{toc}{chapter}{参考文献}
+	\chapter{#1}% 
+	\markboth{#1}{#1}}
+
+\RequirePackage[notbib, notindex]{tocbibind} % 解决TOC在TOC中的问题
+
+\RequirePackage{imakeidx} %索引
+	\makeindex[intoc, title={Index}]
+	\makeindex[intoc, name=symbol, title={Symbol List}]
+	\newcommand*{\indexbf}[1]{\emph{\textbf{#1}}\index{#1}} % Index for definition
+	\newcommand*{\indexmath}[2][\ ]{#2\index[symbol]{#1@$#2$}} % Used Symbol
+	% \indexmath[name for sort]{display} 
+
+% 对目录项等的修改
+\RequirePackage{chngcntr}
+	\counterwithout{section}{chapter} % So that the section won't reset when newing a chapter
+\renewcommand{\thesection}{\textmd{\S}\arabic{section}}
+\renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
+
+% 引用的宏包:
+% 宏包的使用, 可以在命令行运行texdoc <宏包名>获得文档
+\RequirePackage{multicol} % 分栏 (全局分栏建议在文档类处设置)
+\RequirePackage{amsmath} % AMS数学标准
+	\makeatletter % '@' now normal "letter"
+	\@addtoreset{equation}{section} % 每次换section就把equation清零
+	\makeatother  % '@' is restored as "non-letter"
+	\renewcommand\theequation{\oldstylenums{\arabic{section}}%
+					-\oldstylenums{\arabic{equation}}} % 显示为section数-equation数
+\RequirePackage{amssymb} % 数学符号
+\RequirePackage{mathrsfs} % 花体
+\RequirePackage{amsthm} %定义、证明、定理等
+	\theoremstyle{plain}
+		\newtheorem{axiom}{Axiom} %公理
+		\newtheorem{theorem}{Theorem}[section] %定理
+		\newtheorem{corollary}{Corollary} %推论
+		\newtheorem{lemma}{Lemma} %引理
+	\theoremstyle{definition}
+		\newtheorem{definition}{Definition}[section] %定义
+		\newtheorem{proposition}{Proposition} %命题
+	\renewcommand{\proofname}{\textbf{Proof}}
+
+\renewcommand{\thetheorem}{%
+	\arabic{section}.\arabic{theorem}%
+} % 公式编号不显示`\S`
+\renewcommand{\thedefinition}{%
+	\arabic{section}.\arabic{definition}%
+} % 定义编号不显示`\S`
+
+\RequirePackage{esint} % 积分
+\RequirePackage{siunitx} % 标准SI数值和单位处理
+
+\RequirePackage{tikz} % 绘图
+\RequirePackage{float} % 浮动体 (供图片, 表格等) 扩展, 主要用于提供h模式
+\RequirePackage{graphicx} % 插入图片
+\RequirePackage{titlepic}
+\RequirePackage[font=small, skip=5pt]{caption} % 缩小题注字体和题注与图片距离
+\RequirePackage{subcaption} % 子图和子图的题注
+\RequirePackage{svg} % svg位图
+\RequirePackage{wrapfig} % 简单的图文绕排
+\RequirePackage[inline]{enumitem} % 编号
+	% 新列表:
+	\newlist{conditionlist}{enumerate}{2}
+	\setlist[conditionlist,1]{topsep = 0pt, itemsep = 0pt, parsep = 0pt,%
+		label=\arabic*), leftmargin=2\parindent}
+	\setlist[conditionlist,2]{topsep = 0pt, itemsep = 0pt, parsep = 0pt,%
+		label=\alph*), leftmargin=3\parindent}
+\RequirePackage{geometry} % 调整页边距
+% \geometry{left=1.6cm,right=1.6cm}
+\RequirePackage{xcolor} % 颜色
+\RequirePackage[colorlinks=true,bookmarks=true]{hyperref} % 引用, 交叉引用, 图表等的链接; 生成书签
+\hypersetup{linkcolor=[rgb]{1,0.27,0},bookmarksopen = true}% 更多设置请查阅: texdoc hyperref
+
+
+% 定义一些笔者常用的指令:
+\newcommand{\me}{\mathrm{e}} % 自然对数的底
+\newcommand{\mi}{\mathrm{i}} % 虚数单位
+\newcommand{\dif}{\mathop{}\!\mathrm{d}} % 微分算子d
+\newcommand*{\basis}[1]{\hat{\boldsymbol{#1}}} % 基底
+\newcommand*{\bv}[1]{\boldsymbol{#1}} % 向量加粗
+\newcommand*{\IFF}{\;\leftrightarrow\;} % 充要条件
+
+\newcommand*{\diff}[3][1]
+{\if#11%
+	\frac{\mathrm{d} #2}{\mathrm{d} #3}% 导数\diff{y}{x}
+\else%
+	\frac{\mathrm{d}^{#1} #2}{\mathrm{d} {#3}^{#1}}% n阶导数\diff[n]{y}{x}
+\fi}
+\newcommand*{\pdiff}[3][1]
+{\if#11%
+	\frac{\partial #2}{\partial #3}% 偏导数\pdiff{y}{x}
+\else%
+	\frac{\partial^{#1} #2}{\partial {#3}^{#1}}% n阶偏导数\pdiff[n]{y}{x}
+\fi}
+\newcommand{\emphbf}[1]{\emph{\textbf{#1}}}
+% \indexbf 的定义见前imakeidx的引用下
+
+% 笔者习惯的运算符:
+\DeclareMathOperator{\tg}{tg}
+\DeclareMathOperator{\ctg}{ctg}
+\DeclareMathOperator{\arctg}{arctg}
+\DeclareMathOperator{\sh}{sh}
+\DeclareMathOperator{\ch}{ch}
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\ran}{ran}
+\DeclareMathOperator{\interior}{int}
+\DeclareMathOperator{\card}{card}
+\DeclareMathOperator{\SO}{SO}
+\DeclareMathOperator{\SU}{SU}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Inn}{Inn}
+\DeclareMathOperator{\id}{id}
+
+% \DeclareMathOperator*{\指令}{显示} 
+% 带星号的版本会像\lim一样
+
