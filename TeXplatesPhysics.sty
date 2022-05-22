@@ -1,5 +1,5 @@
 % TeXplates/Physics.tex
-% v0.1.0
+% v0.1.1a
 % https://github.com/HoyanMok/TeXplates
 \ProvidesPackage{TeXplatesPhysics}
 
@@ -62,6 +62,8 @@
 \RequirePackage{siunitx} % 标准SI数值和单位处理
 
 \RequirePackage{tikz} % 绘图
+\RequirePackage{tikzfeynhand}  % 费曼图
+
 \RequirePackage{float} % 浮动体 (供图片, 表格等) 扩展, 主要用于提供h模式
 \RequirePackage{graphicx} % 插入图片
 \RequirePackage{titlepic}
@@ -177,5 +179,17 @@
 \DeclareMathOperator{\arctg}{arctg}
 \DeclareMathOperator{\sh}{sh}
 \DeclareMathOperator{\ch}{ch}
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\ran}{ran}
+\DeclareMathOperator{\interior}{int}
+\DeclareMathOperator{\card}{card}
+\DeclareMathOperator{\SO}{SO}
+\DeclareMathOperator{\SU}{SU}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Inn}{Inn}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\diag}{diag}
 % \DeclareMathOperator*{\指令}{显示} 
 % 带星号的版本会像\lim一样
