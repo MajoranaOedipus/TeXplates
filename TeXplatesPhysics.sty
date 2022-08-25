@@ -1,5 +1,5 @@
 % TeXplates/Physics.tex
-% v0.1.1b
+% v0.1.1c
 % https://github.com/HoyanMok/TeXplates
 \ProvidesPackage{TeXplatesPhysics}
 
@@ -20,6 +20,7 @@
 	\newcommand*{\indexbf}[1]{\emph{\textbf{#1}}\index{#1}} % Index for definition
 	\newcommand*{\indexfm}[2][\ ]{#2\index[symbol]{#1@$#2$}} % Used Symbol
 	% \indexfm[name for sort]{display} 
+	\newcommand*{\indexmath}[2][\ ]{#2\index[symbol]{#1@$#2$}}
 
 
 
@@ -40,6 +41,7 @@
 					-\oldstylenums{\arabic{equation}}} % 显示为section数-equation数
 \RequirePackage{amssymb} % 数学符号
 \RequirePackage{mathrsfs} % 花体
+\RequirePackage{mathtools}
 \RequirePackage{amsthm} %定义、证明、定理等
 	\theoremstyle{plain}
 		\newtheorem{axiom}{Axiom} %公理
@@ -50,6 +52,7 @@
 		\newtheorem{definition}{Definition}[section] %定义
 		\newtheorem{proposition}{Proposition} %命题
 	\renewcommand{\proofname}{\textbf{Proof}}
+
 
 \renewcommand{\thetheorem}{%
 	\arabic{section}.\arabic{theorem}%
@@ -171,6 +174,8 @@
 	}
 
 \newcommand{\emphbf}[1]{\emph{\textbf{#1}}}
+
+\newcommand{\hence}{\ensuremath{\quad \Rightarrow \quad}}
 % \indexbf 的定义见前imakeidx的引用下
 
 % 笔者习惯的运算符:
@@ -186,9 +191,14 @@
 \DeclareMathOperator{\SO}{SO}
 \DeclareMathOperator{\SU}{SU}
 \DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\so}{\mathfrak{so}}
+\DeclareMathOperator{\su}{\mathfrak{su}}
 \DeclareMathOperator{\Hom}{Hom}
 \DeclareMathOperator{\Aut}{Aut}
 \DeclareMathOperator{\Inn}{Inn}
 \DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\ad}{ad}
+\DeclareMathOperator{\Ad}{Ad}
 % \DeclareMathOperator*{\指令}{显示} 
 % 带星号的版本会像\lim一样
