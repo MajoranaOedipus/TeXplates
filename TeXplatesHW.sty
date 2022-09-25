@@ -1,7 +1,7 @@
-% TeXplates/Physics.tex
-% v0.2.1
+% TeXplates/HW.tex
+% v0.0.1
 % https://github.com/HoyanMok/TeXplates
-\ProvidesPackage{TeXplatesPhysics}
+\ProvidesPackage{TeXplatesHW}
 
 % \RequirePackage{CJK} % for Chinese charactors appearing in the reference.
 \RequirePackage{biblatex} %[style=gb7714-2015]{biblatex} 可以选择样式
@@ -9,26 +9,17 @@
 % 令参考资料能够加入目录中:
 \defbibheading{bibliography}[\bibname]{% 
 	% \addcontentsline{toc}{chapter}{参考文献}
-	\chapter{#1}% 
+	\section{#1}% 
 	\markboth{#1}{#1}}
 
-\RequirePackage[notbib, notindex]{tocbibind} % 解决TOC在TOC中的问题
-
-\RequirePackage{imakeidx} %索引
-	\makeindex[intoc, title={Index}]
-	\makeindex[intoc, name=symbol, title={Symbol List}]
-	\newcommand*{\indexbf}[1]{\emph{\textbf{#1}}\index{#1}} % Index for definition
-	\newcommand*{\indexfm}[2][\ ]{#2\index[symbol]{#1@$#2$}} % Used Symbol
-	% \indexfm[name for sort]{display} 
-	\newcommand*{\indexmath}[2][\ ]{#2\index[symbol]{#1@$#2$}}
+\RequirePackage[notbib]{tocbibind} % 解决TOC在TOC中的问题
 
 
 
 % 对目录项等的修改
 \RequirePackage{chngcntr}
-	\counterwithout{section}{chapter} % So that the section won't reset when newing a chapter
-\renewcommand{\thesection}{\textmd{\S}\arabic{section}}
-\renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
+\renewcommand{\thesection}{\arabic{section}.}
+\renewcommand{\thesubsection}{(\arabic{subsection})}
 
 % 引用的宏包:
 % 宏包的使用, 可以在命令行运行texdoc <宏包名>获得文档
