@@ -1,5 +1,5 @@
 % TeXplates/Mathematics.sty
-% v0.4.0
+% v0.5.0
 % https://github.com/HoyanMok/TeXplates
 
 \ProvidesPackage{TeXplatesMathematics}
@@ -50,6 +50,7 @@
 		\newtheorem{definition}{Definition}[section] %定义
 		\newtheorem{proposition}{Proposition} %命题
 	\renewcommand{\proofname}{\textbf{Proof}}
+\RequirePackage{mathtools}
 
 \renewcommand{\thetheorem}{%
 	\arabic{section}.\arabic{theorem}%
@@ -90,7 +91,8 @@
 % 定义一些笔者常用的指令:
 \newcommand{\me}{\mathrm{e}} % 自然对数的底
 \newcommand{\mi}{\mathrm{i}} % 虚数单位
-\newcommand{\dif}{\mathrm{d}} % 微分算子d
+\newcommand*{\dif}[1][]
+	{\mathop{}\!\mathrm{d}^{#1}} % 微分算子d
 \newcommand*{\basis}[1]{\hat{\boldsymbol{#1}}} % 基底
 \newcommand*{\bv}[1]{\boldsymbol{#1}} % 向量加粗
 \newcommand*{\IFF}{\;\leftrightarrow\;} % 充要条件
@@ -110,6 +112,7 @@
 \fi}
 \newcommand{\emphbf}[1]{\emph{\textbf{#1}}}
 \newcommand{\hence}{\ensuremath{\quad \Rightarrow \quad}}
+\newcommand{\dummy}{-}
 % \indexbf 的定义见前imakeidx的引用下
 
 % 笔者习惯的运算符:
@@ -130,6 +133,25 @@
 \DeclareMathOperator{\Inn}{Inn}
 \DeclareMathOperator{\id}{id}
 \DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator{\vol}{vol}
+
+
+% Categories
+\newcommand{\catname}[1]{\mathsf{#1}}
+
+\DeclareMathOperator{\obj}{obj}
+\DeclareMathOperator{\Set}{\catname{Set}}
+\DeclareMathOperator{\Top}{\catname{Top}}
+\DeclareMathOperator{\Mod}{\catname{Mod}}
+\DeclareMathOperator{\Grp}{\catname{Grp}}
+\DeclareMathOperator{\Ab}{\catname{Ab}}
+\DeclareMathOperator{\Ring}{\catname{Ring}}
+\DeclareMathOperator{\CRing}{\catname{CRing}}
+\DeclareMathOperator{\Asc}{\catname{Asc}}
+\DeclareMathOperator{\Ord}{\catname{Ord}}
+\DeclareMathOperator{\hTop}{\catname{hTop}}
+
 
 % \DeclareMathOperator*{\指令}{显示} 
 % 带星号的版本会像\lim一样

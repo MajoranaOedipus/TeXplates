@@ -1,5 +1,5 @@
 % TeXplates/HW.tex
-% v0.0.2
+% v0.1.0
 % https://github.com/HoyanMok/TeXplates
 \ProvidesPackage{TeXplatesHW}
 
@@ -58,6 +58,7 @@
 
 \RequirePackage{tikz} % 绘图
 \RequirePackage{tikz-feynhand}  % 费曼图
+\usetikzlibrary{intersections}
 
 \RequirePackage{float} % 浮动体 (供图片, 表格等) 扩展, 主要用于提供h模式
 \RequirePackage{graphicx} % 插入图片
@@ -169,6 +170,26 @@
 
 \newcommand{\hence}{\ensuremath{\quad \Rightarrow \quad}}
 % \indexbf 的定义见前imakeidx的引用下
+
+\newcommand{\vcbox}[1]{\vcenter{\hbox{#1}}}
+\newcommand{\FD}[2][baseline=0]{
+	\ensuremath{\vcbox{
+		\begin{tikzpicture}[#1]
+			\begin{feynhand}
+				{#2}
+			\end{feynhand}
+		\end{tikzpicture}	
+		}
+	}
+}	% feynman diagram
+
+
+
+\newcommand{\closesource}[1]{
+    \left.
+        #1
+    \right|_{J = 0}
+}
 
 % 笔者习惯的运算符:
 \DeclareMathOperator{\tg}{tg}

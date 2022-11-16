@@ -1,5 +1,5 @@
 % TeXplates/Physics.tex
-% v0.2.2
+% v0.3.0
 % https://github.com/HoyanMok/TeXplates
 \ProvidesPackage{TeXplatesPhysics}
 
@@ -177,7 +177,27 @@
 \newcommand{\emphbf}[1]{\emph{\textbf{#1}}}
 
 \newcommand{\hence}{\ensuremath{\quad \Rightarrow \quad}}
+
+\newcommand{\vcbox}[1]{\vcenter{\hbox{#1}}}
+\newcommand{\FD}[2][baseline=0]{
+	\ensuremath{\vcbox{
+		\begin{tikzpicture}[#1]
+			\begin{feynhand}
+				{#2}
+			\end{feynhand}
+		\end{tikzpicture}	
+		}
+	}
+}	% feynman diagram
+
+\newcommand{\closesource}[1]{
+    \left.
+        #1
+    \right|_{J = 0}
+}
+
 % \indexbf 的定义见前imakeidx的引用下
+
 
 % 笔者习惯的运算符:
 \DeclareMathOperator{\tg}{tg}
