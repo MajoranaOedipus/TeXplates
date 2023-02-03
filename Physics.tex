@@ -1,5 +1,5 @@
 % TeXplates/Physics.tex
-% v0.2.1
+% v0.3.0
 % https://github.com/HoyanMok/TeXplates
 \documentclass[openany, a5paper]{book} 
 % \documentclass{ctexbook} 如果用中文
@@ -87,6 +87,7 @@ Multiline equations and the alignment:
 The counter \verb|section| doesn't reset when a new chapter opened. 
 
 \appendix
+\renewcommand{\theequation}{\Alph{chapter}-\arabic{equation}}
 \chapter{Appendix}
 
 \backmatter
