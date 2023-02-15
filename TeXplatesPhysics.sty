@@ -88,6 +88,16 @@
 \RequirePackage[colorlinks=true,bookmarks=true]{hyperref} % 引用, 交叉引用, 图表等的链接; 生成书签
 \hypersetup{linkcolor=[rgb]{1,0.27,0},bookmarksopen = true}% 更多设置请查阅: texdoc hyperref
 
+% 对页眉等的修改
+\RequirePackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead{} % clear all header fields
+\fancyhead[RO,LE]{\thepage}
+\fancyhead[RE]{\footnotesize\leftmark}
+\fancyhead[LO]{\footnotesize\rightmark}
+\renewcommand{\headrulewidth}{0.4pt}
+
+
 
 % 定义一些笔者常用的指令:
 \newcommand{\me}{\mathrm{e}} % 自然对数的底
