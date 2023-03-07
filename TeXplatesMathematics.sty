@@ -1,5 +1,5 @@
 % TeXplates/Mathematics.sty
-% v0.5.1
+% v0.6.0
 % https://github.com/HoyanMok/TeXplates
 
 \ProvidesPackage{TeXplatesMathematics}
@@ -114,6 +114,15 @@
 \newcommand{\hence}{\ensuremath{\quad \Rightarrow \quad}}
 \newcommand{\dummy}{-}
 % \indexbf 的定义见前imakeidx的引用下
+
+% 对页眉等的修改
+\RequirePackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead{} % clear all header fields
+\fancyhead[RO,LE]{\thepage}
+\fancyhead[RE]{\small\textsc{\nouppercase{\leftmark}}}
+\fancyhead[LO]{\small\textsc{\nouppercase{\rightmark}}}
+\renewcommand{\headrulewidth}{0.4pt}
 
 % 笔者习惯的运算符:
 \DeclareMathOperator{\tg}{tg}
