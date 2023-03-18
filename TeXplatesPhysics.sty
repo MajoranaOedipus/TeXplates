@@ -1,5 +1,5 @@
 % TeXplates/Physics.tex
-% v0.4.0
+% v0.5.0
 % https://github.com/HoyanMok/TeXplates
 \ProvidesPackage{TeXplatesPhysics}
 
@@ -207,6 +207,17 @@
 }
 
 % \indexbf 的定义见前imakeidx的引用下
+
+\NewCommandCopy\oldequation\equation
+\NewCommandCopy\endoldequation\endequation
+\renewenvironment{equation}{%
+	\oldequation
+	\begin{aligned}
+}{%
+	\end{aligned}
+	\endoldequation
+	\ignorespacesafterend
+}
 
 
 % 笔者习惯的运算符:
