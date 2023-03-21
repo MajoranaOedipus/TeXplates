@@ -1,5 +1,5 @@
 % TeXplates/Physics.tex
-% v0.5.0
+% v0.6.0
 % https://github.com/HoyanMok/TeXplates
 \ProvidesPackage{TeXplatesPhysics}
 
@@ -219,6 +219,14 @@
 	\ignorespacesafterend
 }
 
+\renewenvironment{align}{%
+	\begin{equation}
+	\begin{aligned}
+}{
+	\end{aligned}
+	\end{equation}
+	\ignorespacesafterend
+}
 
 % 笔者习惯的运算符:
 \DeclareMathOperator{\tg}{tg}

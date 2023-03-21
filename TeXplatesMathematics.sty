@@ -1,5 +1,5 @@
 % TeXplates/Mathematics.sty
-% v0.6.0
+% v0.8.0
 % https://github.com/HoyanMok/TeXplates
 
 \ProvidesPackage{TeXplatesMathematics}
@@ -115,6 +115,27 @@
 \newcommand{\dummy}{-}
 % \indexbf 的定义见前imakeidx的引用下
 
+\NewCommandCopy\old\equation
+\NewCommandCopy\endoldequation\endequation
+\renewenvironment{equation}{%
+	\oldequation
+	\begin{aligned}
+}{%
+	\end{aligned}
+	\endoldequation
+	\ignorespacesafterend
+}
+
+\renewenvironment{align}{%
+	\begin{equation}
+	\begin{aligned}
+}{
+	\end{aligned}
+	\end{equation}
+	\ignorespacesafterend
+}
+
+
 % 对页眉等的修改
 \RequirePackage{fancyhdr}
 \pagestyle{fancy}
@@ -142,6 +163,7 @@
 \DeclareMathOperator{\Inn}{Inn}
 \DeclareMathOperator{\End}{End}
 \DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\tr}{tr}
 \DeclareMathOperator{\diag}{diag}
 \DeclareMathOperator{\sign}{sign}
 \DeclareMathOperator{\vol}{vol}
