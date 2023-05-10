@@ -1,5 +1,5 @@
 % TeXplates/Mathematics.sty
-% v0.8.0
+% v0.9.0
 % https://github.com/HoyanMok/TeXplates
 
 \ProvidesPackage{TeXplatesMathematics}
@@ -84,6 +84,7 @@
 \RequirePackage{geometry} % 调整页边距
 % \geometry{left=1.6cm,right=1.6cm}
 \RequirePackage{xcolor} % 颜色
+\RequirePackage{xr-hyper} % 跨文件引用
 \RequirePackage[colorlinks=true,bookmarks=true]{hyperref} % 引用, 交叉引用, 图表等的链接; 生成书签
 \hypersetup{linkcolor=[rgb]{1,0.27,0},bookmarksopen = true}% 更多设置请查阅: texdoc hyperref
 
@@ -115,17 +116,6 @@
 \newcommand{\dummy}{-}
 % \indexbf 的定义见前imakeidx的引用下
 
-\NewCommandCopy\old\equation
-\NewCommandCopy\endoldequation\endequation
-\renewenvironment{equation}{%
-	\oldequation
-	\begin{aligned}
-}{%
-	\end{aligned}
-	\endoldequation
-	\ignorespacesafterend
-}
-
 \renewenvironment{align}{%
 	\begin{equation}
 	\begin{aligned}
@@ -134,6 +124,19 @@
 	\end{equation}
 	\ignorespacesafterend
 }
+
+% \NewCommandCopy\old\equation
+% \NewCommandCopy\endoldequation\endequation
+% \renewenvironment{equation}{%
+% 	\oldequation
+% 	\begin{aligned}
+% }{%
+% 	\end{aligned}
+% 	\endoldequation
+% 	\ignorespacesafterend
+% }
+
+
 
 
 % 对页眉等的修改
@@ -158,6 +161,8 @@
 \DeclareMathOperator{\SO}{SO}
 \DeclareMathOperator{\SU}{SU}
 \DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\so}{\mathfrak{so}}
+\DeclareMathOperator{\su}{\mathfrak{su}}
 \DeclareMathOperator{\Hom}{Hom}
 \DeclareMathOperator{\Aut}{Aut}
 \DeclareMathOperator{\Inn}{Inn}
