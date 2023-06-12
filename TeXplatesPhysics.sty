@@ -1,5 +1,5 @@
 % TeXplates/Physics.tex
-% v0.7.1
+% v0.7.2
 % https://github.com/HoyanMok/TeXplates
 \ProvidesPackage{TeXplatesPhysics}
 
@@ -11,6 +11,9 @@
 	% \addcontentsline{toc}{chapter}{参考文献}
 	\chapter{#1}% 
 	\markboth{#1}{#1}}
+
+% 调整参考文献的字体大小
+\renewcommand*{\bibfont}{\normalfont\small}
 
 \RequirePackage[notbib, notindex]{tocbibind} % 解决TOC在TOC中的问题
 
