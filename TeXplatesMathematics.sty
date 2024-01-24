@@ -1,5 +1,5 @@
 % TeXplates/Mathematics.sty
-% v0.9.1
+% v0.10.0
 % https://github.com/HoyanMok/TeXplates
 
 \ProvidesPackage{TeXplatesMathematics}
@@ -47,9 +47,30 @@
 		\newtheorem{corollary}{Corollary} %推论
 		\newtheorem{lemma}{Lemma} %引理
 	\theoremstyle{definition}
-		\newtheorem{definition}{Definition}[section] %定义
+		% \newtheorem{definition}{Definition}[section] %定义
 		\newtheorem{proposition}{Proposition} %命题
 	\renewcommand{\proofname}{\textbf{Proof}}
+
+\RequirePackage{mdframed}
+
+
+\mdfdefinestyle{definitionstyle}{%
+	backgroundcolor = gray!10,%
+	innerleftmargin = 5pt,%
+	innerrightmargin = 5pt,%
+	innertopmargin = 0pt,%
+	linewidth = 0pt,%
+	frametitlerule=true,%
+	frametitlebackgroundcolor=gray!20,%
+	frametitlerulewidth=0pt,%
+	frametitleaboveskip=0.5pt,%
+	frametitlebelowskip=0.5pt,%
+}
+\mdtheorem[%
+	style=definitionstyle,%
+	theoremtitlefont=\normalfont%
+]{definition}{Definition}[section]
+
 \RequirePackage{mathtools}
 
 \renewcommand{\thetheorem}{%

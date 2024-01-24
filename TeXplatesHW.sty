@@ -1,5 +1,5 @@
 % TeXplates/HW.tex
-% v0.2.0
+% v0.3.0
 % https://github.com/HoyanMok/TeXplates
 \ProvidesPackage{TeXplatesHW}
 
@@ -202,7 +202,6 @@
 \DeclareMathOperator{\ran}{ran}
 \DeclareMathOperator{\interior}{int}
 \DeclareMathOperator{\card}{card}
-\DeclareMathOperator{\Orth}{O}
 \DeclareMathOperator{\SO}{SO}
 \DeclareMathOperator{\SU}{SU}
 \DeclareMathOperator{\GL}{GL}
@@ -211,11 +210,27 @@
 \DeclareMathOperator{\Hom}{Hom}
 \DeclareMathOperator{\Aut}{Aut}
 \DeclareMathOperator{\Inn}{Inn}
-\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\End}{End}
 \DeclareMathOperator{\tr}{tr}
-\DeclareMathOperator{\ad}{ad}
-\DeclareMathOperator{\Ad}{Ad}
-\DeclareMathOperator{\Res}{Res}
-\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator{\vol}{vol}
+\DeclareMathOperator{\Nat}{Nat}
+
+
+% Categories
+\newcommand{\catname}[1]{\mathsf{#1}}
+
+\DeclareMathOperator{\obj}{obj}
+\DeclareMathOperator{\Set}{\catname{Set}}
+\DeclareMathOperator{\Top}{\catname{Top}}
+\DeclareMathOperator{\Mod}{\catname{Mod}}
+\DeclareMathOperator{\Grp}{\catname{Grp}}
+\DeclareMathOperator{\Ab}{\catname{Ab}}
+\DeclareMathOperator{\Ring}{\catname{Ring}}
+\DeclareMathOperator{\CRing}{\catname{CRing}}
+\DeclareMathOperator{\Asc}{\catname{Asc}}
+\DeclareMathOperator{\Ord}{\catname{Ord}}
+\DeclareMathOperator{\hTop}{\catname{hTop}}
 % \DeclareMathOperator*{\指令}{显示} 
 % 带星号的版本会像\lim一样
