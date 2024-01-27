@@ -1,10 +1,15 @@
 % TeXplates/Physics.tex
-% v0.8.0
+% v0.8.1
 % https://github.com/HoyanMok/TeXplates
 \ProvidesPackage{TeXplatesPhysics}
 
 % \RequirePackage{CJK} % for Chinese charactors appearing in the reference.
-\RequirePackage{biblatex} %[style=gb7714-2015]{biblatex} 可以选择样式
+\RequirePackage[%
+	%style = numeric,% default styleS
+]{biblatex}
+
+\DeclareFieldFormat*{urldate}{}	% do not print url date
+\DeclareFieldFormat*{note}{}	% do not print note
 
 % 令参考资料能够加入目录中:
 \defbibheading{bibliography}[\bibname]{% 
