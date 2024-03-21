@@ -1,5 +1,5 @@
 % TeXplates/Physics.tex
-% v0.8.1
+% v0.8.2
 % https://github.com/HoyanMok/TeXplates
 \ProvidesPackage{TeXplatesPhysics}
 
@@ -62,17 +62,30 @@
 		\newtheorem{proposition}{Proposition} %命题
 	\renewcommand{\proofname}{\textbf{Proof}}
 
+\RequirePackage{xcolor} % 颜色
+
+\definecolor{ORANGE}{HTML}{FF4500}	% used for generation in mycolor.space
+\definecolor{BLUE}{HTML}{0087FF}
+\definecolor{GREEN}{HTML}{00A763}
+\definecolor{ORANGEfaded}{HTML}{F2B199}
+\definecolor{ORANGEfaded2}{HTML}{FFE6D6}
+\definecolor{BLUEfaded}{HTML}{86AEE1}
+\definecolor{BLUEfaded2}{HTML}{DBF2FF}
+\definecolor{GREENvivide}{HTML}{00A300}
+\definecolor{GREENdeep}{HTML}{006D00}
+
+
 \RequirePackage{mdframed}
 
 
 \mdfdefinestyle{definitionstyle}{%
-	backgroundcolor = gray!10,%
+	backgroundcolor = BLUEfaded2,% 
 	innerleftmargin = 5pt,%
 	innerrightmargin = 5pt,%
 	innertopmargin = 0pt,%
 	linewidth = 0pt,%
 	frametitlerule=true,%
-	frametitlebackgroundcolor=gray!20,%
+	frametitlebackgroundcolor = BLUEfaded,%
 	frametitlerulewidth=0pt,%
 	frametitleaboveskip=0.5pt,%
 	frametitlebelowskip=0.5pt,%
@@ -112,10 +125,14 @@
 		label=\alph*), leftmargin=3\parindent}
 \RequirePackage{geometry} % 调整页边距
 % \geometry{left=1.6cm,right=1.6cm}
-\RequirePackage{xcolor} % 颜色
+
 \RequirePackage{xr-hyper} % 跨文件引用
 \RequirePackage[colorlinks=true,bookmarks=true]{hyperref} % 引用, 交叉引用, 图表等的链接; 生成书签
-\hypersetup{linkcolor=[rgb]{1,0.27,0},bookmarksopen = true}% 更多设置请查阅: texdoc hyperref
+\hypersetup{%
+	linkcolor=ORANGE,%
+	citecolor=BLUE,% 
+	urlcolor=GREEN,%
+	bookmarksopen = true} % 更多设置请查阅: texdoc hyperref
 
 % 对页眉等的修改
 \RequirePackage{fancyhdr}
@@ -289,6 +306,7 @@
 \DeclareMathOperator{\Ric}{Ric}
 \DeclareMathOperator{\Hess}{Hess}
 \DeclareMathOperator{\Riem}{Riem}
+\DeclareMathOperator{\Cov}{Cov}
 
 % \DeclareMathOperator*{\指令}{显示} 
 % 带星号的版本会像\lim一样
