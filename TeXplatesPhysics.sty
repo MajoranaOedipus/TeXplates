@@ -1,5 +1,5 @@
 % TeXplates/Physics.tex
-% v0.8.2
+% v0.9.0
 % https://github.com/HoyanMok/TeXplates
 \ProvidesPackage{TeXplatesPhysics}
 
@@ -108,6 +108,7 @@
 
 \RequirePackage{tikz} % 绘图
 \RequirePackage{tikz-feynhand}  % 费曼图
+\RequirePackage{tikz-cd}
 
 \RequirePackage{float} % 浮动体 (供图片, 表格等) 扩展, 主要用于提供h模式
 \RequirePackage{graphicx} % 插入图片
@@ -231,6 +232,8 @@
 		\right\vert_{#2}
 	}
 
+\newcommand{\inv}{^{-1}} % inverse
+
 \newcommand{\emphbf}[1]{\emph{\textbf{#1}}}
 
 \newcommand{\hence}{\ensuremath{\quad \Rightarrow \quad}}
@@ -255,25 +258,25 @@
 
 % \indexbf 的定义见前imakeidx的引用下
 
-\NewCommandCopy\oldequation\equation
-\NewCommandCopy\endoldequation\endequation
-\renewenvironment{equation}{%
-	\oldequation
-	\begin{aligned}
-}{%
-	\end{aligned}
-	\endoldequation
-	\ignorespacesafterend
-}
+% \NewCommandCopy\oldequation\equation
+% \NewCommandCopy\endoldequation\endequation
+% \renewenvironment{equation}{%
+% 	\oldequation
+% 	\begin{aligned}
+% }{%
+% 	\end{aligned}
+% 	\endoldequation
+% 	\ignorespacesafterend
+% }
 
-\renewenvironment{align}{%
-	\begin{equation}
-	\begin{aligned}
-}{
-	\end{aligned}
-	\end{equation}
-	\ignorespacesafterend
-}
+% \renewenvironment{align}{%
+% 	\begin{equation}
+% 	\begin{aligned}
+% }{
+% 	\end{aligned}
+% 	\end{equation}
+% 	\ignorespacesafterend
+% }
 
 % 笔者习惯的运算符:
 \DeclareMathOperator{\tg}{tg}
