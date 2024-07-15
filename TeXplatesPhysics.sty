@@ -1,6 +1,9 @@
 % TeXplates/Physics.tex
 % v0.9.1
 % https://github.com/HoyanMok/TeXplates
+% TeXplates/TeXplatesPhysics.sty
+% v0.10.0
+% https://codeberg.org/TeXplates
 \ProvidesPackage{TeXplatesPhysics}
 
 % \RequirePackage{CJK} % for Chinese charactors appearing in the reference.
@@ -67,6 +70,10 @@
 \definecolor{ORANGE}{HTML}{FF4500}	% used for generation in mycolor.space
 \definecolor{BLUE}{HTML}{0087FF}
 \definecolor{GREEN}{HTML}{00A763}
+\definecolor{RED}{HTML}{FF0056}
+\definecolor{PINK}{HTML}{F40096}
+\definecolor{PURPLE}{HTML}{B934CC}
+
 \definecolor{ORANGEfaded}{HTML}{F2B199}
 \definecolor{ORANGEfaded2}{HTML}{FFE6D6}
 \definecolor{BLUEdeep}{HTML}{395281}
@@ -83,13 +90,13 @@
 	backgroundcolor = BLUEfaded2,% 
 	innerleftmargin = 5pt,%
 	innerrightmargin = 5pt,%
-	innertopmargin = 0pt,%
+	innertopmargin = 2pt,%
 	linewidth = 0pt,%
 	frametitlerule=true,%
 	frametitlebackgroundcolor = BLUEfaded,%
 	frametitlerulewidth=0pt,%
 	frametitleaboveskip=0.5pt,%
-	frametitlebelowskip=0.5pt,%
+	frametitlebelowskip=0.5pt%
 }
 \mdtheorem[%
 	style=definitionstyle,%
@@ -118,6 +125,7 @@
 \RequirePackage{subcaption} % 子图和子图的题注
 \RequirePackage{svg} % svg位图
 \RequirePackage{wrapfig} % 简单的图文绕排
+\usepackage{booktabs}
 \RequirePackage[inline]{enumitem} % 编号
 	% 新列表:
 	\newlist{conditionlist}{enumerate}{2}
@@ -154,7 +162,34 @@
 \newcommand*{\bv}{\boldsymbol} % 向量加粗
 \newcommand*{\id}{\mathrm{id}} % 单位映射
 \newcommand*{\IFF}{\;\leftrightarrow\;} % 充要条件
-\newcommand{\dummy}{-} % 映射的占位符
+
+\newcommand{\AdS}[1][\ ]{%
+	\if#1\ %
+		\ensuremath{\mathrm{AdS}}%
+	\else%
+		\ensuremath{\mathrm{AdS}_{#1}}%
+	\fi%
+}
+\newcommand{\CFT}[1][\ ]{%
+\if#1\ %
+	\ensuremath{\mathrm{CFT}}%
+\else%
+	\ensuremath{\mathrm{CFT}_{#1}}%
+\fi%
+}
+\newcommand{\coloredMathBox}[2][yellow!50]{
+	\text{%
+		\setlength{\fboxsep}{0pt}%
+		\colorbox{#1}{\ensuremath{#2}}%
+	}
+}
+
+\newcommand{\dummy}[1][x]{%
+	\coloredMathBox[gray!50]{%
+		% \color{ORANGE}%
+			{\phantom{#1}}%
+	}%
+} % 映射的占位符
 
 \newcommand*{\bra}[1]
 	{
@@ -257,6 +292,39 @@
     \right|_{J = 0}
 }
 
+% \owedge 
+\makeatletter
+\newcommand*{\owedge}{%
+  \mathbin{%
+    \mathpalette\@owedge{}%
+  }%
+}
+\newcommand*{\@owedge}[2]{%
+  % #1: math style
+  % #2: unused
+  \sbox0{$#1\oplus\m@th$}%
+  \dimen2=.5\dimexpr\wd0-\ht0-\dp0\relax % side bearing
+  \dimen@=\dimexpr\ht0+\dp0\relax
+  \def\lw{.04}% line width as factor for height of \oplus
+  \def\radius{.5-\lw/2}%
+  \kern\dimen2 % side bearing
+  \tikz[
+    line width=\lw\dimen@,
+    line join=round,
+    x=\dimen@,
+    y=\dimen@,
+    baseline=\dimexpr-.5\dimen@+\dp0\relax,
+  ]
+  \draw
+    (0,0) circle[radius=\radius]
+    % -36.87 = -90 + 2 atan(1/2)
+    % 216.87 = 180 + 36.87
+    (225:\radius) -- (0,.5-\lw) -- (-45:\radius)
+  ;%
+  \kern\dimen2 % side bearing  
+}
+\makeatother
+
 % \indexbf 的定义见前imakeidx的引用下
 
 % \NewCommandCopy\oldequation\equation
@@ -290,7 +358,9 @@
 \DeclareMathOperator{\interior}{int}
 \DeclareMathOperator{\card}{card}
 \DeclareMathOperator{\Orth}{O}
+\DeclareMathOperator{\Euclidean}{E}
 \DeclareMathOperator{\SO}{SO}
+\DeclareMathOperator{\ISO}{ISO}
 \DeclareMathOperator{\SU}{SU}
 \DeclareMathOperator{\GL}{GL}
 \DeclareMathOperator{\so}{\mathfrak{so}}
@@ -313,6 +383,7 @@
 \DeclareMathOperator{\Cov}{Cov}
 \DeclareMathOperator{\AdS}{AdS}
 \DeclareMathOperator{\CFT}{CFT}
+
 
 % \DeclareMathOperator*{\指令}{显示} 
 % 带星号的版本会像\lim一样

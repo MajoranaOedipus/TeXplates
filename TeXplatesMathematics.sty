@@ -149,7 +149,12 @@
 \fi}
 \newcommand{\emphbf}[1]{\emph{\textbf{#1}}}
 \newcommand{\hence}{\ensuremath{\quad \Rightarrow \quad}}
-\newcommand{\dummy}{-}
+\newcommand{\dummy}[1][x]{%
+	\coloredMathBox[gray!50]{%
+		% \color{ORANGE}%
+			{\phantom{#1}}%
+	}%
+} % 映射的占位符
 % \indexbf 的定义见前imakeidx的引用下
 
 \renewenvironment{align}{%
